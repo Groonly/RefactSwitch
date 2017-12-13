@@ -3,20 +3,29 @@ SOURCES = test/mathTest.c\
 					test/testMain.c\
 					unity/extras/fixture/src/unity_fixture.c\
 					unity/src/unity.c\
-					mathLib/mathFunc.c
+
+UTIL_SCR = mathLib/mathFunc.c
+
 
 FILES= $(SOURCES)
 OBJECTS=$(FILES:.c=.o)
 HEADERS=$(FILES:.c=.h)
 
+UTIL_OBJECTS=$(UTIL_SCR:.c=.o)
+UTIL_HEADERS=$(UTIL_SCR:.c=.h)
 
 CC=gcc
 DEBUG=-g
 LFLAGS=-Wall
 CFLAGS=-c -Wall
 
+all: test main run
 
-test: $(OBJECTS)
+
+main: main.o $(UTIL_OBJECTS)
+	$(CC) $(LFLAGS) $^ -o $@
+
+test: $(OBJECTS) $(UTIL_OBJECTS)
 	$(CC) $(LFLAGS) $^ -o $@
 
 %.o:%.c $(HEADERS)
@@ -28,5 +37,5 @@ run:
 	./test.exe
 
 clean:
-	rm $(OBJECTS)
-	rm test.exe
+	rm $(OBJECTS) $(UTIL_OBJECTS) main.o
+	rm *.exe
