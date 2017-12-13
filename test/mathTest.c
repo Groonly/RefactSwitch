@@ -23,3 +23,11 @@ TEST(Math, AdditionNegativeInt)
 TEST(Math, SubtractionPositivInt){
   TEST_ASSERT_EQUAL_FLOAT(4.0, sub(8.0, 4.0));
 }
+
+TEST(Math, SubtractionNegativeInt){
+  TEST_ASSERT_EQUAL_FLOAT(0.0, sub(-2.0, -2.0));
+}
+
+TEST(Math, MultiplicationPositivInt){
+  TEST_ASSERT_EQUAL_FLOAT(4, multi(2,2));
+}

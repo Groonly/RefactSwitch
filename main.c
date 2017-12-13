@@ -2,11 +2,12 @@
 // Performs addition, subtraction, multiplication or division depending the input from user
 
 # include <stdio.h>
+#include "mathLib/mathFunc.h"
 
 int main() {
 
     char operator;
-    double firstNumber,secondNumber;
+    double firstNumber,secondNumber, res;
 
     printf("Enter an operator (+, -, *, /): ");
     scanf("%c", &operator);
@@ -17,25 +18,24 @@ int main() {
     switch(operator)
     {
         case '+':
-            printf("%.1lf + %.1lf = %.1lf",firstNumber, secondNumber, firstNumber+secondNumber);
+            res = add(firstNumber, secondNumber);
             break;
-
         case '-':
-            printf("%.1lf - %.1lf = %.1lf",firstNumber, secondNumber, firstNumber-secondNumber);
+            res = sub(firstNumber, secondNumber);
             break;
 
         case '*':
-            printf("%.1lf * %.1lf = %.1lf",firstNumber, secondNumber, firstNumber*secondNumber);
+            res = firstNumber*secondNumber;
             break;
 
         case '/':
-            printf("%.1lf / %.1lf = %.1lf",firstNumber, secondNumber, firstNumber/firstNumber);
+            res = firstNumber/firstNumber;
             break;
 
         // operator is doesn't match any case constant (+, -, *, /)
         default:
             printf("Error! operator is not correct");
     }
-
+    printf("%.1lf + %.1lf = %.1lf",firstNumber, secondNumber, res);
     return 0;
 }
