@@ -7,9 +7,9 @@ SOURCES = test/mathTest.c\
 UTIL_SCR = mathLib/mathFunc.c
 
 
-FILES= $(SOURCES)
-OBJECTS=$(FILES:.c=.o)
-HEADERS=$(FILES:.c=.h)
+
+OBJECTS=$(SOURCES:.c=.o)
+HEADERS=$(SOURCES:.c=.h)
 
 UTIL_OBJECTS=$(UTIL_SCR:.c=.o)
 UTIL_HEADERS=$(UTIL_SCR:.c=.h)
@@ -19,8 +19,7 @@ DEBUG=-g
 LFLAGS=-Wall
 CFLAGS=-c -Wall
 
-all: test main run
-
+all: test main run_test
 
 main: main.o $(UTIL_OBJECTS)
 	$(CC) $(LFLAGS) $^ -o $@
@@ -29,11 +28,9 @@ test: $(OBJECTS) $(UTIL_OBJECTS)
 	$(CC) $(LFLAGS) $^ -o $@
 
 %.o:%.c $(HEADERS)
-	$(CC)	$(CFLAGS) $(DEBUG) $(FILES)
+	$(CC)	$(CFLAGS) $(DEBUG) $(SOURCES))
 
-all: test run
-
-run:
+run_test:
 	./test.exe
 
 clean:
