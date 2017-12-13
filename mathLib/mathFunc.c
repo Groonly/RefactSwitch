@@ -8,7 +8,7 @@ double sub(double value1, double value2)
   return ((value1) - (value2));
 }
 
-double multi(double value1, double value2){
-  //return ((value1)*(value2));
-  return;
+double multi(double value1, double value2)
+{
+  return((value1) * (value2));
 }
